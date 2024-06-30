@@ -2,6 +2,10 @@
 
 This repository contains a batch script that allows you to apply a set of BCDEdit tweaks to your Windows system. These tweaks can potentially improve system performance and compatibility.
 
+## Disclaimer
+
+Modifying system settings can have significant effects on your system's behavior. Only apply these tweaks if you understand what they do. If you're unsure, it's best to seek advice from a professional or knowledgeable community. Use this script at your own risk.
+
 ## Overview
 
 The `BCDEditTweaks.cmd` script is designed to be run in a Command Prompt with administrative privileges. It provides an easy way to apply a set of BCDEdit tweaks or reset them to default values.
@@ -53,7 +57,3 @@ These tweaks can be beneficial in various scenarios, such as:
 ## Resetting to Default
 
 The script can also reset all of the above tweaks to their default values. This is done by deleting the corresponding BCDEdit entries and setting the `nx` option back to `OptIn`, which is the default setting on most systems.
-
-## Disclaimer
-
-Modifying system settings can have significant effects on your system's behavior. Only apply these tweaks if you understand what they do. If you're unsure, it's best to seek advice from a professional or knowledgeable community. Use this script at your own risk.
