@@ -14,6 +14,7 @@ The `BCDEditTweaks.cmd` script is designed to be run in a Command Prompt with ad
     - `[1] Apply BCDEdit Tweaks`
     - `[2] Reset to Default`
 4. Enter your choice and press Enter.
+5. After proper script execution restart your system.
 
 ## Tweaks
 
