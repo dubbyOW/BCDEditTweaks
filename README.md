@@ -4,18 +4,30 @@ This repository contains a batch script that allows you to apply a set of BCDEdi
 
 ## Disclaimer
 
-Modifying system settings can have significant effects on your system's behavior. Only apply these tweaks if you understand what they do. If you're unsure, it's best to seek advice from a professional or knowledgeable community. Use this script at your own risk.
+Modifying system settings can have significant effects on your system’s behavior and introduce security risks. Machines connected to the internet with these tweaks applied need to be very cautious about the websites they visit, the files they download, and the links they click. Only apply these tweaks if you understand what they do. If you’re unsure, it’s best to seek advice from a professional or knowledgeable community. Use this script at your own risk.
+
+## Safe alternative
+
+If you are not an advanced user, you can still benefit from the safe options that pose ZERO SECURITY RISK if you choose the BCDEditSafeTweaks.cmd script. If you want to know exactly what these tweaks do, read one of the sections below that describes every single tweak.
+The parameters rated safe are:
+- `bcdedit /set disabledynamictick yes`
+- `bcdedit /set useplatformtick yes`
+- `bcdedit /set tscsyncpolicy enhanced`
+- `bcdedit /set uselegacyapicmode no`
+- `bcdedit /set usephysicaldestination no`
+- `bcdedit /set hypervisorlaunchtype off`: This one should only be used if you don’t plan on using a Virtual Machine.
+
 
 ## Overview
 
-The `BCDEditTweaks.cmd` script is designed to be run in a Command Prompt with administrative privileges. It provides an easy way to apply a set of BCDEdit tweaks or reset them to default values.
+The `BCDEditTweaks.cmd` and `BCDEditSafeTweaks.cmd` scripts are designed to be run in a Command Prompt with administrative privileges. They provide an easy way to apply sets of BCDEdit tweaks or reset them to default values.
 
 ## Usage
 
-1. Download the `BCDEditTweaks.cmd` script from this repository.
+1. Download the `BCDEditTweaks.cmd` or `BCDEditSafeTweaks.cmd` script from this repository.
 2. Right-click on the downloaded file and select 'Run as administrator'.
 3. The script will prompt you with two options:
-    - `[1] Apply BCDEdit Tweaks`
+    - `[1] Apply BCDEdit Tweaks` or `Apply BCDEdit Safe Tweaks`
     - `[2] Reset to Default`
 4. Enter your choice and press Enter.
 5. After proper script execution, restart your system.
@@ -28,17 +40,17 @@ The script can also reset all of the above tweaks to their default values. This 
 
 The script applies the following BCDEdit tweaks:
 
-- `bcdedit /set disabledynamictick yes`: This tweak turns off the dynamic tick feature. A "tick" is a timer interval on your computer that triggers the operating system to perform various tasks. By disabling the dynamic tick, your computer may perform tasks more consistently, which can lead to improved performance. However, this may also increase power consumption.
+- `bcdedit /set disabledynamictick yes`: [RATED SAFE] This tweak turns off the dynamic tick feature. A "tick" is a timer interval on your computer that triggers the operating system to perform various tasks. By disabling the dynamic tick, your computer may perform tasks more consistently, which can lead to improved performance. However, this may also increase power consumption.
 
-- `bcdedit /set useplatformtick yes`: This tweak forces your computer to use the platform clock, which is a more accurate timer source. This can lead to a more accurate system time resolution, which is important for the synchronization of various system components, including input devices. By improving the synchronization with input devices, this tweak can enhance input responsiveness and reduce input delay, providing a smoother user experience.
+- `bcdedit /set useplatformtick yes`: [RATED SAFE] This tweak forces your computer to use the platform clock, which is a more accurate timer source. This can lead to a more accurate system time resolution, which is important for the synchronization of various system components, including input devices. By improving the synchronization with input devices, this tweak can enhance input responsiveness and reduce input delay, providing a smoother user experience.
 
 - `bcdedit /set usefirmwarepcisettings no`: This tweak prevents your computer from using PCI Express settings provided by the firmware. Firmware is a type of software that provides low-level control for your computer's hardware. By not using these settings, your computer may avoid potential compatibility and performance issues.
 
-- `bcdedit /set tscsyncpolicy enhanced`: This tweak sets the Time Stamp Counter (TSC) synchronization policy to 'enhanced'. The TSC is a counter that counts the number of clock cycles since your computer was reset. It's used by the operating system to keep track of the time. By setting the synchronization policy to 'enhanced', your computer can better coordinate tasks across multiple cores, which can improve performance.
+- `bcdedit /set tscsyncpolicy enhanced`: [RATED SAFE] This tweak sets the Time Stamp Counter (TSC) synchronization policy to 'enhanced'. The TSC is a counter that counts the number of clock cycles since your computer was reset. It's used by the operating system to keep track of the time. By setting the synchronization policy to 'enhanced', your computer can better coordinate tasks across multiple cores, which can improve performance.
 
-- `bcdedit /set uselegacyapicmode no`: This tweak disables legacy APIC mode. The APIC (Advanced Programmable Interrupt Controller) is a part of your computer that helps manage how it handles interrupts, which are signals sent by hardware devices to get the processor's attention. By disabling the legacy mode, your computer can handle interrupts more efficiently, which can result in improved performance.
+- `bcdedit /set uselegacyapicmode no`: [RATED SAFE] This tweak disables legacy APIC mode. The APIC (Advanced Programmable Interrupt Controller) is a part of your computer that helps manage how it handles interrupts, which are signals sent by hardware devices to get the processor's attention. By disabling the legacy mode, your computer can handle interrupts more efficiently, which can result in improved performance.
 
-- `bcdedit /set usephysicaldestination no`: This tweak disables the use of physical APIC IDs. An APIC ID is a unique identifier assigned to each processor core in your computer. By disabling the use of physical IDs, your computer can potentially improve performance on systems with large numbers of logical processors.
+- `bcdedit /set usephysicaldestination no`: [RATED SAFE] This tweak disables the use of physical APIC IDs. An APIC ID is a unique identifier assigned to each processor core in your computer. By disabling the use of physical IDs, your computer can potentially improve performance on systems with large numbers of logical processors.
 
 - `bcdedit /set tpmbootentropy ForceDisable`: This tweak disables the use of TPM-provided entropy for early boot. The TPM (Trusted Platform Module) is a chip on your computer that can generate random numbers, which are used for various security functions. By disabling this feature, your computer can potentially speed up boot times.
 
@@ -48,7 +60,7 @@ The script applies the following BCDEdit tweaks:
 
 - `bcdedit /set testsigning No`: This tweak disables test signing mode. Some anti-cheat systems in games may prevent the game from loading if test signing mode is enabled. Test signing mode is a feature that allows developers to test drivers that they're working on, but it can pose a security risk if left enabled.
 
-- `bcdedit /set hypervisorlaunchtype off`: This tweak disables the hypervisor, a piece of software that creates and runs virtual machines. If you're not running any virtual machines, disabling the hypervisor can free up system resources.
+- `bcdedit /set hypervisorlaunchtype off`: [RATED SAFE] This tweak disables the hypervisor, a piece of software that creates and runs virtual machines. If you're not running any virtual machines, disabling the hypervisor can free up system resources.
 
 - `bcdedit /set nx AlwaysOff`: This tweak disables Data Execution Prevention (DEP), a security feature that helps prevent damage from viruses and other security threats. However, disabling DEP can potentially improve performance and solve compatibility issues with some older software. It may also make the system more vulnerable to certain types of attacks.
 
