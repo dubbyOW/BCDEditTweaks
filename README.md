@@ -20,6 +20,10 @@ The `BCDEditTweaks.cmd` script is designed to be run in a Command Prompt with ad
 4. Enter your choice and press Enter.
 5. After proper script execution, restart your system.
 
+## Resetting to Default
+
+The script can also reset all of the above tweaks to their default values. This is done by deleting the corresponding BCDEdit entries and setting the `nx` option back to `OptIn`, which is the default setting on most systems.
+
 ## Tweaks
 
 The script applies the following BCDEdit tweaks:
@@ -53,7 +57,3 @@ These tweaks can be beneficial in various scenarios, such as:
 - **Performance Optimization**: If you're running resource-intensive applications, these tweaks can potentially improve system performance and responsiveness.
 - **Compatibility Improvement**: If you're using older software or custom drivers, some of these tweaks can help solve compatibility issues.
 - **System Customization**: If you like to tweak your system settings to suit your preferences, this script provides an easy way to apply and reset a set of BCDEdit tweaks.
-
-## Resetting to Default
-
-The script can also reset all of the above tweaks to their default values. This is done by deleting the corresponding BCDEdit entries and setting the `nx` option back to `OptIn`, which is the default setting on most systems.
