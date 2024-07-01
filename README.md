@@ -8,7 +8,7 @@ Modifying system settings can have significant effects on your system’s behavi
 
 ## Safe alternative
 
-If you are not an advanced user, you can still benefit from the safe options that pose ZERO SECURITY RISK if you choose the BCDEditSafeTweaks.cmd script. If you want to know exactly what these tweaks do, read one of the sections below that describes every single tweak.
+If you are not an advanced user, you can still benefit from the safe options that pose ZERO SECURITY RISK if you choose the `BCDEditSafeTweaks.cmd` script. If you want to know exactly what these tweaks do, read one of the sections below that describes every single tweak.
 The parameters rated safe are:
 - `bcdedit /set disabledynamictick yes`
 - `bcdedit /set useplatformtick yes`
