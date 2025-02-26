@@ -1,71 +1,105 @@
-# BCDEdit Tweaks Script
+# BCDEdit Tweaks
 
-This repository contains a batch script that allows you to apply a set of BCDEdit tweaks to your Windows system. These tweaks can potentially improve system performance and compatibility.
+A comprehensive toolkit for optimizing Windows boot configuration through carefully selected BCDEdit tweaks. This repository provides scripts to enhance system performance and compatibility with full transparency about each modification.
 
-## Disclaimer
+## 🚨 Important Disclaimer
 
-Modifying system settings can have significant effects on your system’s behavior and introduce security risks. Machines connected to the internet with these tweaks applied need to be very cautious about the websites they visit, the files they download, and the links they click. Only apply these tweaks if you understand what they do. If you’re unsure, it’s best to seek advice from a professional or knowledgeable community. Use this script at your own risk.
+Modifying boot configuration settings can significantly impact your system's behavior and may introduce security vulnerabilities. Systems with these tweaks applied should exercise extra caution regarding:
+- Websites visited
+- Files downloaded
+- Links clicked
 
-## Safe alternative
+**Only apply these tweaks if you fully understand their implications.** If uncertain, please consult with IT professionals or experienced community members before proceeding. All modifications are applied at your own risk.
 
-If you are not an advanced user, you can still benefit from the safe options that pose ZERO SECURITY RISK if you choose the `BCDEditSafeTweaks.cmd` script. If you want to know exactly what these tweaks do, read one of the sections below that describes every single tweak.
-The parameters rated safe are:
+## 🛡️ Safe Options Available
+
+Not an advanced user? You can still benefit from our **zero security risk** options by using the Safe Tweaks option in the script. These safe tweaks provide performance benefits without compromising system security.
+
+### Safe Parameters:
 - `bcdedit /set disabledynamictick yes`
 - `bcdedit /set useplatformtick yes`
 - `bcdedit /set tscsyncpolicy enhanced`
 - `bcdedit /set uselegacyapicmode no`
 - `bcdedit /set usephysicaldestination no`
-- `bcdedit /set hypervisorlaunchtype off`: This one should only be used if you don’t plan on using a Virtual Machine.
+- `bcdedit /set hypervisorlaunchtype off` *(Note: Only use if you don't need virtual machines)*
 
+## 📋 Script Overview
 
-## Overview
+This repository includes a comprehensive `BCDEditTweaks.cmd` script that combines all functionality into a single, easy-to-use tool.
 
-The `BCDEditTweaks.cmd` and `BCDEditSafeTweaks.cmd` scripts are designed to be run in a Command Prompt with administrative privileges. They provide an easy way to apply sets of BCDEdit tweaks or reset them to default values.
+The script provides three main options:
+1. Apply All BCDEdit Tweaks (Performance + Compatibility)
+2. Apply Safe BCDEdit Tweaks (Zero Security Risk)
+3. Reset All Settings to Default
 
-## Usage
+## 🚀 How to Use
 
-1. Download the `BCDEditTweaks.cmd` or `BCDEditSafeTweaks.cmd` script from this repository.
-2. Right-click on the downloaded file and select 'Run as administrator'.
-3. The script will prompt you with two options:
-    - `[1] Apply BCDEdit Tweaks` or `Apply BCDEdit Safe Tweaks`
-    - `[2] Reset to Default`
-4. Enter your choice and press Enter.
-5. After proper script execution, restart your system.
+1. Download the `BCDEditTweaks.cmd` script from this repository
+2. Right-click the file and select **"Run as administrator"**
+3. Choose from the available options:
+   - `[1] Apply All BCDEdit Tweaks` - Full set of optimizations (includes advanced tweaks)
+   - `[2] Apply Safe BCDEdit Tweaks` - Security-focused subset of tweaks
+   - `[3] Reset All Settings to Default` - Return to original configuration
+   - `[4] Exit` - Close the program
+4. **Important:** Restart your system after script execution for changes to take effect
 
-## Resetting to Default
+## 🔄 Reverting Changes
 
-The script can also reset all of the above tweaks to their default values. This is done by deleting the corresponding BCDEdit entries and setting the `nx` option back to `OptIn`, which is the default setting on most systems.
+If you need to return to default settings, the script includes a "Reset All Settings to Default" option that:
+- Removes all applied tweaks
+- Restores the `nx` parameter to its default `OptIn` value
+- Returns your system to its original boot configuration
 
-## Tweaks
+## 🔧 Complete Tweaks Reference
 
-The script applies the following BCDEdit tweaks:
+Each tweak has been labeled with a safety rating to help you understand potential impacts:
 
-- `bcdedit /set disabledynamictick yes`: [RATED SAFE] This tweak turns off the dynamic tick feature. A "tick" is a timer interval on your computer that triggers the operating system to perform various tasks. By disabling the dynamic tick, your computer may perform tasks more consistently, which can lead to improved performance. However, this may also increase power consumption.
+### Safe Tweaks:
 
-- `bcdedit /set useplatformtick yes`: [RATED SAFE] This tweak forces your computer to use the platform clock, which is a more accurate timer source. This can lead to a more accurate system time resolution, which is important for the synchronization of various system components, including input devices. By improving the synchronization with input devices, this tweak can enhance input responsiveness and reduce input delay, providing a smoother user experience.
+- **`bcdedit /set disabledynamictick yes`** [✅ SAFE]  
+  Disables dynamic tick feature for more consistent task handling. May increase power consumption but improves performance consistency.
 
-- `bcdedit /set usefirmwarepcisettings no`: This tweak prevents your computer from using PCI Express settings provided by the firmware. Firmware is a type of software that provides low-level control for your computer's hardware. By not using these settings, your computer may avoid potential compatibility and performance issues.
+- **`bcdedit /set useplatformtick yes`** [✅ SAFE]  
+  Forces use of the platform clock for more accurate timing resolution. Enhances input responsiveness and reduces input delay.
 
-- `bcdedit /set tscsyncpolicy enhanced`: [RATED SAFE] This tweak sets the Time Stamp Counter (TSC) synchronization policy to 'enhanced'. The TSC is a counter that counts the number of clock cycles since your computer was reset. It's used by the operating system to keep track of the time. By setting the synchronization policy to 'enhanced', your computer can better coordinate tasks across multiple cores, which can improve performance.
+- **`bcdedit /set tscsyncpolicy enhanced`** [✅ SAFE]  
+  Improves Time Stamp Counter synchronization for better multi-core task coordination.
 
-- `bcdedit /set uselegacyapicmode no`: [RATED SAFE] This tweak disables legacy APIC mode. The APIC (Advanced Programmable Interrupt Controller) is a part of your computer that helps manage how it handles interrupts, which are signals sent by hardware devices to get the processor's attention. By disabling the legacy mode, your computer can handle interrupts more efficiently, which can result in improved performance.
+- **`bcdedit /set uselegacyapicmode no`** [✅ SAFE]  
+  Disables legacy interrupt controller mode for more efficient interrupt handling.
 
-- `bcdedit /set usephysicaldestination no`: [RATED SAFE] This tweak disables the use of physical APIC IDs. An APIC ID is a unique identifier assigned to each processor core in your computer. By disabling the use of physical IDs, your computer can potentially improve performance on systems with large numbers of logical processors.
+- **`bcdedit /set usephysicaldestination no`** [✅ SAFE]  
+  Optimizes processor core ID handling for systems with multiple logical processors.
 
-- `bcdedit /set tpmbootentropy ForceDisable`: This tweak disables the use of TPM-provided entropy for early boot. The TPM (Trusted Platform Module) is a chip on your computer that can generate random numbers, which are used for various security functions. By disabling this feature, your computer can potentially speed up boot times.
+- **`bcdedit /set hypervisorlaunchtype off`** [✅ SAFE]  
+  Disables hypervisor when not using virtual machines, freeing up system resources.
 
-- `bcdedit /set bootux Disabled`: This tweak disables the boot user experience, which is the graphical interface you see when your computer is starting up. By disabling this, your computer can potentially speed up boot times.
+### Advanced Tweaks (Potential Security Implications):
 
-- `bcdedit /set loadoptions DDISABLE_INTEGRITY_CHECKS` and `bcdedit /set nointegritychecks Yes`: These commands disable driver signature enforcement, allowing the system to load unsigned or custom drivers. This can potentially improve the performance of these drivers, but it should be used with caution as it can pose a security risk.
+- **`bcdedit /set usefirmwarepcisettings no`**  
+  Bypasses firmware PCI Express settings to avoid potential compatibility issues.
 
-- `bcdedit /set testsigning No`: This tweak disables test signing mode. Some anti-cheat systems in games may prevent the game from loading if test signing mode is enabled. Test signing mode is a feature that allows developers to test drivers that they're working on, but it can pose a security risk if left enabled.
+- **`bcdedit /set tpmbootentropy ForceDisable`**  
+  Disables TPM-provided entropy during early boot for faster startup times.
 
-- `bcdedit /set hypervisorlaunchtype off`: [RATED SAFE] This tweak disables the hypervisor, a piece of software that creates and runs virtual machines. If you're not running any virtual machines, disabling the hypervisor can free up system resources.
+- **`bcdedit /set bootux Disabled`**  
+  Removes graphical boot experience to accelerate system startup.
 
-- `bcdedit /set nx AlwaysOff`: This tweak disables Data Execution Prevention (DEP), a security feature that helps prevent damage from viruses and other security threats. However, disabling DEP can potentially improve performance and solve compatibility issues with some older software. It may also make the system more vulnerable to certain types of attacks.
+- **`bcdedit /set loadoptions DDISABLE_INTEGRITY_CHECKS`** and **`bcdedit /set nointegritychecks Yes`**  
+  Disables driver signature enforcement. Allows unsigned drivers but introduces security risks.
 
-These tweaks can be beneficial in various scenarios, such as:
+- **`bcdedit /set testsigning No`**  
+  Disables test signing mode. Helpful for compatibility with certain anti-cheat systems.
 
-- **Performance Optimization**: If you're running resource-intensive applications, these tweaks can potentially improve system performance and responsiveness.
-- **Compatibility Improvement**: If you're using older software or custom drivers, some of these tweaks can help solve compatibility issues.
-- **System Customization**: If you like to tweak your system settings to suit your preferences, this script provides an easy way to apply and reset a set of BCDEdit tweaks.
+- **`bcdedit /set nx AlwaysOff`**  
+  Disables Data Execution Prevention. May improve performance with older software but reduces protection against certain attacks.
+
+## 💡 Use Cases
+
+These tweaks can be particularly beneficial for:
+
+- **Performance Enhancement:** Improving system responsiveness for resource-intensive applications and gaming
+- **Legacy Software Support:** Resolving compatibility issues with older applications
+- **Input Latency Reduction:** Minimizing delays in input processing for competitive gaming
+- **Boot Time Optimization:** Accelerating system startup process
+- **System Resource Management:** Allocating resources more efficiently for specific workloads
